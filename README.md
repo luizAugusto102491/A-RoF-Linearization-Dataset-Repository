@@ -84,9 +84,8 @@ Below is a simple code snippet demonstrating how to load the dataset and train a
 """
 Created on Thu Feb 29 17:47:17 2024
 
-@author: luizmelo
+@author: Luiz Augusto Melo Pereira
 """
-
 
 import numpy as np
 import tensorflow as tf
@@ -96,7 +95,6 @@ import matplotlib.pyplot as plt
 
 # Earling Stop Technique
 callback = tf.keras.callbacks.EarlyStopping(monitor='mean_squared_error',  patience=100,min_delta=1e-9, verbose=1,restore_best_weights=True)
-
 
 # Replace 'path_to_tx_data' and 'path_to_rx_data' with the actual file paths on your system
 tx_data_path = '/home/luizmelo/Documentos/Dataset/6 MHz/dataset_1_rof_input_0dBm_6MHz'
@@ -108,17 +106,11 @@ tx_data = np.fromfile(tx_data_path, dtype=np.complex64)
 # Load the received data from the file
 rx_data = np.fromfile(rx_data_path, dtype=np.complex64)
 
-
-#%%
-
 #---------------------------------
 # Preparing the training data-set 
 #--------------------------------
 train_matrix = np.c_[rx_data.real, rx_data.imag]
 train_labels = np.c_[tx_data.real, tx_data.imag]
-
-
-#%%
 
 #-----------------------
 # Designing the MLP
@@ -136,7 +128,6 @@ mlpModel.add(Dense(2,kernel_initializer=initializer))
 mlpModel.compile(loss='mean_squared_error', optimizer='adam', metrics=['mean_squared_error'])
 mlpModel.summary()
 history = mlpModel.fit(train_matrix, train_labels,validation_split=0.3, epochs=5000, batch_size=1024, callbacks=[callback], verbose=2, shuffle=True)
-
 
 # summarize history for loss
 plt.plot(history.history['mean_squared_error'])
