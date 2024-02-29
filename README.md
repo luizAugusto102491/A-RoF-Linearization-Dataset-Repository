@@ -6,17 +6,14 @@ Here, we address this gap by offering a rich dataset. Leveraging a software-defi
 
 The dataset provided includes both transmitted and received GFDM waveform samples, enabling researchers effectively training ML models. By facilitating access to this dataset, we aim to foster the development of robust linearization schemes for A-RoF systems. Researchers can utilize this resource to enhance the effectiveness and robustness of ML-based linearization techniques, thus advancing the state-of-the-art in linearization A-RoF technology. 
 
+*********************
 
 ## Summary :clipboard:
 
-* [Project Description](#project-description)
 * [How to Use](#how-to-use)
 * [Dataset Information](#dataset-information)
 * [Example Usage](#example-usage)
 
-*********************
-
-##  Project Description :rocket: <a name="project-description"></a>
 
 *********************
 
