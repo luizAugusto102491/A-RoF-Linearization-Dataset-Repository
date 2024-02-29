@@ -83,10 +83,10 @@ tx_data = np.fromfile(tx_data_path, dtype=np.complex64)
 rx_data = np.fromfile(rx_data_path, dtype=np.complex64)
 
 
-
+```
 *********************
 
-##  Example Usage💻: <a name="example-usage"></a>
+##  Example Usage : <a name="example-usage"></a>
 
 Below is a simple code snippet demonstrating how to load the dataset and train a basic neural network for A-RoF system linearization:
 
@@ -111,7 +111,7 @@ model.fit(X_train, y_train)
 accuracy = model.score(X_test, y_test)
 print("Model Accuracy:", accuracy)
 
-
+```
 *********************
 
 
