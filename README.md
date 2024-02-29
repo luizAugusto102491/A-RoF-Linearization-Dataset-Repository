@@ -79,25 +79,74 @@ rx_data = np.fromfile(rx_data_path, dtype=np.complex64)
 Below is a simple code snippet demonstrating how to load the dataset and train a basic neural network for A-RoF system linearization:
 
 ```python
-import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.neural_network import MLPRegressor
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Feb 29 17:47:17 2024
 
-# Load dataset
-dataset = pd.read_csv('data/dataset.csv')
-X = dataset.drop(columns=['output'])
-y = dataset['output']
+@author: luizmelo
+"""
 
-# Split dataset into train and test sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-# Initialize and train neural network model
-model = MLPRegressor(hidden_layer_sizes=(100,), max_iter=1000)
-model.fit(X_train, y_train)
+import numpy as np
+import tensorflow as tf
+from tensorflow.keras import Sequential
+from tensorflow.keras.layers import Dense, Flatten 
+import matplotlib.pyplot as plt
 
-# Evaluate model
-accuracy = model.score(X_test, y_test)
-print("Model Accuracy:", accuracy)
+# Earling Stop Technique
+callback = tf.keras.callbacks.EarlyStopping(monitor='mean_squared_error',  patience=100,min_delta=1e-9, verbose=1,restore_best_weights=True)
+
+
+# Replace 'path_to_tx_data' and 'path_to_rx_data' with the actual file paths on your system
+tx_data_path = '/home/luizmelo/Documentos/Dataset/6 MHz/dataset_1_rof_input_0dBm_6MHz'
+rx_data_path = '/home/luizmelo/Documentos/Dataset/6 MHz/dataset_1_rof_output_0dBm_6MHz'
+
+# Load the transmission data from the file
+tx_data = np.fromfile(tx_data_path, dtype=np.complex64)
+
+# Load the received data from the file
+rx_data = np.fromfile(rx_data_path, dtype=np.complex64)
+
+
+#%%
+
+#---------------------------------
+# Preparing the training data-set 
+#--------------------------------
+train_matrix = np.c_[rx_data.real, rx_data.imag]
+train_labels = np.c_[tx_data.real, tx_data.imag]
+
+
+#%%
+
+#-----------------------
+# Designing the MLP
+#----------------------
+initializer = tf.keras.initializers.glorot_normal(seed=25)
+mlpModel = Sequential()
+mlpModel.add(Flatten(input_shape=(train_matrix.shape[1],)))
+mlpModel.add(Dense(32, activation='relu',kernel_initializer=initializer))
+mlpModel.add(Dense(16, activation='relu',kernel_initializer=initializer))
+mlpModel.add(Dense(2,kernel_initializer=initializer))
+
+#----------------------
+# Compile the model
+#----------------------
+mlpModel.compile(loss='mean_squared_error', optimizer='adam', metrics=['mean_squared_error'])
+mlpModel.summary()
+history = mlpModel.fit(train_matrix, train_labels,validation_split=0.3, epochs=5000, batch_size=1024, callbacks=[callback], verbose=2, shuffle=True)
+
+
+# summarize history for loss
+plt.plot(history.history['mean_squared_error'])
+plt.plot(history.history['val_mean_squared_error'])
+plt.title('model loss')
+plt.yscale('log')
+plt.ylabel('loss')
+plt.xlabel('epoch')
+plt.legend(['train', 'test'], loc='upper right')
+plt.show()
 
 ```
 *********************
