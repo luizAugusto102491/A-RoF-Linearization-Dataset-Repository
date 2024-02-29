@@ -33,6 +33,12 @@ Each pair of datasets follows the naming convention:
    *   **Transmitted Samples:** (`dataset_n_rof_input_xdBm_yMHz`)
    *   **Received Samples:** (`dataset_n_rof_output_xdBm_yMHz`)
 
+Where:
+
+   * `n` varies from 1 to 11
+   * `x` varies from 0 to 10
+   * `y` represents the bandwidth in MHz
+
 💾 The files are saved using the binary format, which can be easily loaded into any Python IDE or data processing tool.
 
 📁 Each pair of datasets is named as follows:
