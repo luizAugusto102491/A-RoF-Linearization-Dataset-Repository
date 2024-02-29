@@ -7,6 +7,88 @@ Here, we address this gap by offering a rich dataset. Leveraging a software-defi
 The dataset provided includes both transmitted and received GFDM waveform samples, enabling researchers to train ML models effectively. By facilitating access to this dataset, we aim to foster the development of robust linearization schemes for A-RoF systems. Researchers can utilize this resource to enhance the effectiveness and robustness of ML-based linearization techniques, thus advancing the state-of-the-art in A-RoF technology. 
 
 
+## Summary :clipboard:
+
+* [Requirements](#requirements)
+* [Setup and Installation](#setup-installation)
+* [How to Use](#how-to-use)
+
 *********************
 
-# Requisites
+##  Requirements :pencil: <a name="requirements"></a>
+
+* [Ubuntu 18.04](https://releases.ubuntu.com/18.04/)
+* [Python 2.7](https://www.python.org/)
+* [Aff3ct](https://github.com/aff3ct/aff3ct.git)
+* [GNURadio](https://www.gnuradio.org/)
+
+*********************
+
+##  Setup and Network Configuration :white_check_mark: <a name="setup-installation"></a>
+
+### Cloning the repo :file_folder:
+First of all, to get a copy of the project, clone the repository into a folder named as `/home/<user_name>/src` on your machine:
+
+```shell
+git clone https://github.com/inatelcrr/inatel_xgrange_siso_p2p.git
+```
+
+The scripts folder has scripts for installation of all dependencies for this project and network configuration.
+
+### Setup :computer:
+
+**Considering you just installed Ubuntu 18.04 on your machine**. In `scripts/Setup` folder, there is a script called `ubuntu_18_sdr.sh`, which is responsible for configuring your machine and install all dependencies necessary for running this project. Run this script for the **first time** and it will verify if there is a newer kernel version. If there are kernel versions newer than `4.15`, please remove them after reboot for the first time and booting using kernel `4.15`:
+
+``` shell
+sudo apt remove --purge linux-headers-5.* linux-image-5.* linux-modules-5.* linux-modules-extra-5.*
+sudo apt autoremove
+```
+
+After that, reboot your computer again and run the script again (**second time**). Doing that, all dependencies will be installed. So, finished all installation process, reboot the computer.
+
+### Build project in GNU Radio :computer:
+
+Entry in to `src/inatel_xgrange_siso_p2p` folder and execute the commands:
+
+``` shell
+mkdir build
+cd build
+cmake ../
+make -j5
+sudo make install
+sudo ldconfig
+```
+
+### Network configuration  :computer:
+
+The project can be used as two kind of terminal: **base station (BS)** and **user equipment (UE)**. Each one has a specific script for network configuration inside `scripts/Network` folder, because is used a `tun` kernel virtual network device for doing routing process and communicate with phy layer.
+*   **Configuring BS**: For the computer that will run as BS, please run the script `config_network_bs.sh`.
+*   **Configuring UE**: For the computer that will run as UE, please run the script `config_network_ue.sh`.
+
+*********************
+
+ ## How To Use :arrow_forward: <a name="how-to-use"></a>
+
+The `examples` folder contains `GRC` examples for transmitter usage. We have two versions of GRC in order to test this project in two ways. 
+*   **Virtual Loopback:** The first one is the project inside `examples/virtual` folder, called `virtual_xG_Range_loopback.grc`. It runs without using an `USRP` device, that is, it is possible to run the project just in virtual loopback mode to validate the communication. 
+*   **Using SDR/RF (NI USRP):** The second one is the project inside `examples/sdr` folder, called `modem_xG_Range_siso_pp.grc`. It runs using an `USRP` device and it was tested with **NI USRP-2954** and **NI USRP-2952**. In order to communicate **BS** and **UE**, just change the frequency configuration inside the flowgraph that satisfies the following constaints:
+    *   The `downlink_freq` in BS flowgraph should be equal to `uplink_freq` in UE;
+    *   The `uplink_freq` in BS flowgraph should be equal to `downlink_freq` in UE;
+
+    **It is possible to run the communication just using one computer, doing a kind of Loopback but using RF/SDR. For that, the `downlink_freq` should be equal to `uplink_freq`.**
+
+### Testing  :computer:
+
+In order to test the communication between BS and UE terminals when using `RF/SDR (NI USRP)`, it is possible running the following commands:
+
+In BS (to ping UE):
+
+``` shell
+ping 10.0.0.2
+```
+
+Or In UE (to ping BS):
+
+``` shell
+ping 10.0.0.1
+```
