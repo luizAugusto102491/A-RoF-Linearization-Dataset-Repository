@@ -9,15 +9,14 @@ The dataset provided includes both transmitted and received GFDM waveform sample
 *********************
 
 ## Summary :clipboard:
-
-* [How to Use](#how-to-use)
 * [Dataset Information](#dataset-information)
+* [How to Use](#how-to-use)
 * [Example Usage](#example-usage)
 
 
 *********************
 
- ## How To Use :arrow_forward: <a name="how-to-use"></a>
+ ## Dataset Information :arrow_forward: <a name="dataset-information"></a>
 
 
 The dataset provided here contains the training instances and labels acquired from a practical A-RoF system. The dataset consists of signals with bandwidths of 3, 6, 12, and 24 MHz.
@@ -67,7 +66,22 @@ ping 10.0.0.1
 
 *********************
 
-##  Dataset Information 📊: <a name="dataset-information"></a>
+##  How to Use ▶️ward: <a name="how-to-use"></a>
+
+```python
+
+import numpy as np
+
+# Replace 'path_to_tx_data' and 'path_to_rx_data' with the actual file paths on your system
+tx_data_path = 'path_to_tx_data'
+rx_data_path = 'path_to_rx_data'
+
+# Load the transmission data from the file
+tx_data = np.fromfile(tx_data_path, dtype=np.complex64)
+
+# Load the received data from the file
+rx_data = np.fromfile(rx_data_path, dtype=np.complex64)
+
 
 
 *********************
