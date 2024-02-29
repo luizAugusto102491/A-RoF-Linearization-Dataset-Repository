@@ -16,7 +16,7 @@ The dataset provided includes both transmitted and received GFDM waveform sample
 
 *********************
 
-##  Project Description :white_check_mark: <a name="project-description"></a>
+##  Project Description :rocket: <a name="project-description"></a>
 
 *********************
 
