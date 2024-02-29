@@ -16,7 +16,7 @@ The dataset provided includes both transmitted and received GFDM waveform sample
 
 *********************
 
- ## Dataset Information 📊: <a name="dataset-information"></a>
+ ## Dataset Information 📊 <a name="dataset-information"></a>
 
 
 The dataset provided here contains the training instances and labels acquired from a practical A-RoF system. The dataset consists of signals with bandwidths of 3, 6, 12, and 24 MHz.
@@ -66,7 +66,7 @@ ping 10.0.0.1
 
 *********************
 
-##  How to Use ▶️ward: <a name="how-to-use"></a>
+##  How to Use :arrow_forward: <a name="how-to-use"></a>
 
 ```python
 
