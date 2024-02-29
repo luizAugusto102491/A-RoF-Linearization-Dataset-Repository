@@ -37,7 +37,7 @@ Where:
 
    * `n` varies from 1 to 11
    * `x` varies from 0 to 10
-   * `y` represents the bandwidth, which can be 3, 6, 12 or 24 MHz
+   * `y` represents the bandwidth, which can take values of 3, 6, 12 or 24 MHz
 
 *********************
 
