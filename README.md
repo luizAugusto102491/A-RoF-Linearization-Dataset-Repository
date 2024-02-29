@@ -53,7 +53,31 @@ ping 10.0.0.1
 
 *********************
 
-##  Example Usage:white_check_mark: <a name="example-usage"></a>
+##  Example Usage💻: <a name="example-usage"></a>
+
+Below is a simple code snippet demonstrating how to load the dataset and train a basic neural network for A-RoF system linearization:
+
+```python
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.neural_network import MLPRegressor
+
+# Load dataset
+dataset = pd.read_csv('data/dataset.csv')
+X = dataset.drop(columns=['output'])
+y = dataset['output']
+
+# Split dataset into train and test sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Initialize and train neural network model
+model = MLPRegressor(hidden_layer_sizes=(100,), max_iter=1000)
+model.fit(X_train, y_train)
+
+# Evaluate model
+accuracy = model.score(X_test, y_test)
+print("Model Accuracy:", accuracy)
+
 
 *********************
 
