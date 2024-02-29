@@ -57,8 +57,8 @@ To utilize a dataset, follow these steps:
 import numpy as np
 
 # Replace 'path_to_tx_data' and 'path_to_rx_data' with the actual file paths on your system
-tx_data_path = 'path_to_tx_data'
-rx_data_path = 'path_to_rx_data'
+tx_data_path = 'path_to_tx_data/dataset_1_rof_input_10dBm_6MHz'
+rx_data_path = 'path_to_rx_data/dataset_1_rof_input_10dBm_6MHz'
 
 # Load the transmission data from the file
 tx_data = np.fromfile(tx_data_path, dtype=np.complex64)
