@@ -26,6 +26,12 @@ The dataset provided here contains training instances and labels acquired from a
 
 The files are saved in binary format, compatible with most Python IDEs.
 
+### File Name Convention
+
+Each pair of datasets follows the naming convention:
+
+   *   **Transmitted Samples:**
+
 💾 The files are saved using the binary format, which can be easily loaded into any Python IDE or data processing tool.
 
 📁 Each pair of datasets is named as follows:
