@@ -129,6 +129,16 @@ mlpModel.compile(loss='mean_squared_error', optimizer='adam', metrics=['mean_squ
 mlpModel.summary()
 history = mlpModel.fit(train_matrix, train_labels,validation_split=0.3, epochs=5000, batch_size=1024, callbacks=[callback], verbose=2, shuffle=True)
 
+#----------------------
+# Saving both the structure and weights of the trained MLP neural network
+#----------------------
+mlpModel.save("mlpModel.h5")
+
+mlpModel_json = mlpModel.to_json()
+with open("mlpModel.json", "w") as json_file:
+    json_file.write(mlpModel_json)
+
+
 # summarize history for loss
 plt.plot(history.history['mean_squared_error'])
 plt.plot(history.history['val_mean_squared_error'])
