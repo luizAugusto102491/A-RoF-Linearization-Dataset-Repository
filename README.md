@@ -43,6 +43,15 @@ Where:
 
 ##  How to Use :arrow_forward: <a name="how-to-use"></a>
 
+To utilize a dataset, follow these steps:
+
+   * **Selecting Data Files:** Choose the transmitted file (`dataset_n_rof_input_xdBm_yMHz`) and its corresponding received file (`dataset_n_rof_output_xdBm_yMHz`).
+  
+
+   * **Loading Data:** Load the selected files into your Python environment using appropriate functions to read binary data.
+
+   * **Processing:** Once loaded, process the data as required for your A-RoF linearization task.
+
 ```python
 
 import numpy as np
