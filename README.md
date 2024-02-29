@@ -9,20 +9,45 @@ The dataset provided includes both transmitted and received GFDM waveform sample
 
 ## Summary :clipboard:
 
-* [Requirements](#requirements)
-* [Setup and Installation](#setup-installation)
+* [Informations about the Dataset](#information-dataset)
 * [How to Use](#how-to-use)
+* [Setup and Installation](#setup-installation)
 
 *********************
 
-##  Requirements :pencil: <a name="requirements"></a>
-
-* [Ubuntu 18.04](https://releases.ubuntu.com/18.04/)
-* [Python 2.7](https://www.python.org/)
-* [Aff3ct](https://github.com/aff3ct/aff3ct.git)
-* [GNURadio](https://www.gnuradio.org/)
+##  Information About the Dataset :white_check_mark: <a name="information-dataset"></a>
 
 *********************
+
+ ## How To Use :arrow_forward: <a name="how-to-use"></a>
+
+The `examples` folder contains `GRC` examples for transmitter usage. We have two versions of GRC in order to test this project in two ways. 
+*   **Virtual Loopback:** The first one is the project inside `examples/virtual` folder, called `virtual_xG_Range_loopback.grc`. It runs without using an `USRP` device, that is, it is possible to run the project just in virtual loopback mode to validate the communication. 
+*   **Using SDR/RF (NI USRP):** The second one is the project inside `examples/sdr` folder, called `modem_xG_Range_siso_pp.grc`. It runs using an `USRP` device and it was tested with **NI USRP-2954** and **NI USRP-2952**. In order to communicate **BS** and **UE**, just change the frequency configuration inside the flowgraph that satisfies the following constaints:
+    *   The `downlink_freq` in BS flowgraph should be equal to `uplink_freq` in UE;
+    *   The `uplink_freq` in BS flowgraph should be equal to `downlink_freq` in UE;
+
+    **It is possible to run the communication just using one computer, doing a kind of Loopback but using RF/SDR. For that, the `downlink_freq` should be equal to `uplink_freq`.**
+
+### Testing  :computer:
+
+In order to test the communication between BS and UE terminals when using `RF/SDR (NI USRP)`, it is possible running the following commands:
+
+In BS (to ping UE):
+
+``` shell
+ping 10.0.0.2
+```
+
+Or In UE (to ping BS):
+
+``` shell
+ping 10.0.0.1
+```
+
+
+
+
 
 ##  Setup and Network Configuration :white_check_mark: <a name="setup-installation"></a>
 
@@ -64,31 +89,3 @@ sudo ldconfig
 The project can be used as two kind of terminal: **base station (BS)** and **user equipment (UE)**. Each one has a specific script for network configuration inside `scripts/Network` folder, because is used a `tun` kernel virtual network device for doing routing process and communicate with phy layer.
 *   **Configuring BS**: For the computer that will run as BS, please run the script `config_network_bs.sh`.
 *   **Configuring UE**: For the computer that will run as UE, please run the script `config_network_ue.sh`.
-
-*********************
-
- ## How To Use :arrow_forward: <a name="how-to-use"></a>
-
-The `examples` folder contains `GRC` examples for transmitter usage. We have two versions of GRC in order to test this project in two ways. 
-*   **Virtual Loopback:** The first one is the project inside `examples/virtual` folder, called `virtual_xG_Range_loopback.grc`. It runs without using an `USRP` device, that is, it is possible to run the project just in virtual loopback mode to validate the communication. 
-*   **Using SDR/RF (NI USRP):** The second one is the project inside `examples/sdr` folder, called `modem_xG_Range_siso_pp.grc`. It runs using an `USRP` device and it was tested with **NI USRP-2954** and **NI USRP-2952**. In order to communicate **BS** and **UE**, just change the frequency configuration inside the flowgraph that satisfies the following constaints:
-    *   The `downlink_freq` in BS flowgraph should be equal to `uplink_freq` in UE;
-    *   The `uplink_freq` in BS flowgraph should be equal to `downlink_freq` in UE;
-
-    **It is possible to run the communication just using one computer, doing a kind of Loopback but using RF/SDR. For that, the `downlink_freq` should be equal to `uplink_freq`.**
-
-### Testing  :computer:
-
-In order to test the communication between BS and UE terminals when using `RF/SDR (NI USRP)`, it is possible running the following commands:
-
-In BS (to ping UE):
-
-``` shell
-ping 10.0.0.2
-```
-
-Or In UE (to ping BS):
-
-``` shell
-ping 10.0.0.1
-```
