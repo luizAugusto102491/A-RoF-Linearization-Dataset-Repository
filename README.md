@@ -9,13 +9,14 @@ The dataset provided includes both transmitted and received GFDM waveform sample
 
 ## Summary :clipboard:
 
-* [Informations about the Dataset](#information-dataset)
+* [Project Description](#project-description)
 * [How to Use](#how-to-use)
-* [Setup and Installation](#setup-installation)
+* [Dataset Information](#dataset-information)
+* [Example Usage](#example-usage)
 
 *********************
 
-##  Information About the Dataset :white_check_mark: <a name="information-dataset"></a>
+##  Project Description :white_check_mark: <a name="project-description"></a>
 
 *********************
 
@@ -45,7 +46,16 @@ Or In UE (to ping BS):
 ping 10.0.0.1
 ```
 
+*********************
 
+##  Dataset Information :white_check_mark: <a name="dataset-information"></a>
+
+
+*********************
+
+##  Example Usage:white_check_mark: <a name="example-usage"></a>
+
+*********************
 
 
 
