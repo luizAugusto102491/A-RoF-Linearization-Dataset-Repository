@@ -39,47 +39,6 @@ Where:
    * `x` varies from 0 to 10
    * `y` represents the bandwidth, which can be 3, 6, 12 or 24 MHz
 
-💾 The files are saved using the binary format, which can be easily loaded into any Python IDE or data processing tool.
-
-📁 Each pair of datasets is named as follows:
-   - Transmission dataset: `dataset_n_rof_input_xdBm_yMHz`
-   - Corresponding label dataset: `dataset_n_rof_output_xdBm_yMHz`
-   
-   Here, 'n' varies from 1 to 11, 'x' from 0 to 10, and 'y' represents the bandwidth in MHz.
-
-⚙️ To use a dataset:
-   1. Choose the desired transmission file (`dataset_n_rof_input_xdBm_yMHz`) representing the transmitted signals.
-   2. Select its corresponding received file (`dataset_n_rof_output_xdBm_yMHz`) containing the received signals.
-   
-🧩 Once loaded, you can preprocess the data, split it into training and testing sets, and use it to train machine learning models for A-RoF system linearization tasks.
-
-
- 
-
-The `examples` folder contains `GRC` examples for transmitter usage. We have two versions of GRC in order to test this project in two ways. 
-*   **Virtual Loopback:** The first one is the project inside `examples/virtual` folder, called `virtual_xG_Range_loopback.grc`. It runs without using an `USRP` device, that is, it is possible to run the project just in virtual loopback mode to validate the communication. 
-*   **Using SDR/RF (NI USRP):** The second one is the project inside `examples/sdr` folder, called `modem_xG_Range_siso_pp.grc`. It runs using an `USRP` device and it was tested with **NI USRP-2954** and **NI USRP-2952**. In order to communicate **BS** and **UE**, just change the frequency configuration inside the flowgraph that satisfies the following constaints:
-    *   The `downlink_freq` in BS flowgraph should be equal to `uplink_freq` in UE;
-    *   The `uplink_freq` in BS flowgraph should be equal to `downlink_freq` in UE;
-
-    **It is possible to run the communication just using one computer, doing a kind of Loopback but using RF/SDR. For that, the `downlink_freq` should be equal to `uplink_freq`.**
-
-### Testing  :computer:
-
-In order to test the communication between BS and UE terminals when using `RF/SDR (NI USRP)`, it is possible running the following commands:
-
-In BS (to ping UE):
-
-``` shell
-ping 10.0.0.2
-```
-
-Or In UE (to ping BS):
-
-``` shell
-ping 10.0.0.1
-```
-
 *********************
 
 ##  How to Use :arrow_forward: <a name="how-to-use"></a>
