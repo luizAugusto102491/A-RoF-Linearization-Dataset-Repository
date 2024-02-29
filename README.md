@@ -29,9 +29,8 @@ The files are saved in binary format, compatible with most Python IDEs.
 ### File Name Convention:
 
 Each pair of datasets follows the naming convention:
-dataset_<span style="color:red;">n</span>_rof_input_<span style="color:red;">xD</span><span style="color:red;">Bm</span>_<span style="color:red;">y</span><span style="color:red;">MHz</span>
 
-   *   **Transmitted Samples:** (`dataset_n_rof_input_xdBm_yMHz`)
+   *   **Transmitted Samples:** (`dataset_<span style="color:red">n</span>_rof_input_xdBm_yMHz`)
    *   **Received Samples:** (`dataset_n_rof_output_xdBm_yMHz`)
 
 Where:
