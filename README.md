@@ -76,7 +76,7 @@ rx_data = np.fromfile(rx_data_path, dtype=np.complex64)
 
 ##  Example Usage : <a name="example-usage"></a>
 
-Below is a straightforward code snippet demonstrating how to load the dataset and train a basic neural network for linearizing an A-RoF system. In this example, a dataset is loaded, and a Multi-Layer Perceptron Neural Network (MLP) is utilized to estimate the inverse response of the A-RoF system. Here, the received samples serve as the neural network inputs, while the transmitted samples act as the neural network labels. This allows for learning the post-inversion response of the A-RoF system. Additionally, both the neural network weights and structure are saved, facilitating the reconstruction of the neural network inside a Software-Defined Radio (SDR) transceiver. This enables the implementation of a pre-distortion processing block.
+Below is a straightforward code snippet demonstrating how to load the dataset and train a basic neural network for linearizing an A-RoF system. In this example, a dataset is loaded, and a Multi-Layer Perceptron Neural Network (MLP) is utilized to estimate the inverse response of the A-RoF system. Here, the received samples serve as the neural network inputs, while the transmitted samples act as the neural network labels. This allows for learning the post-inverse response of the A-RoF system. Additionally, both the neural network weights and structure are saved, facilitating the reconstruction of the neural network inside a Software-Defined Radio (SDR) transceiver. This enables the implementation of a pre-distortion processing block.
 
 ```python
 #!/usr/bin/env python3
