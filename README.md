@@ -19,6 +19,28 @@ The dataset provided includes both transmitted and received GFDM waveform sample
 
  ## How To Use :arrow_forward: <a name="how-to-use"></a>
 
+
+The dataset provided here contains the training instances and labels acquired from a practical A-RoF system. The dataset consists of signals with bandwidths of 3, 6, 12, and 24 MHz.
+
+*  For each bandwidth, the dataset includes variations in RF power ranging from 0 to 11 dBm, resulting in eleven pairs of datasets for each bandwidth.
+
+💾 The files are saved using the binary format, which can be easily loaded into any Python IDE or data processing tool.
+
+📁 Each pair of datasets is named as follows:
+   - Transmission dataset: `dataset_n_rof_input_xdBm_yMHz`
+   - Corresponding label dataset: `dataset_n_rof_output_xdBm_yMHz`
+   
+   Here, 'n' varies from 1 to 11, 'x' from 0 to 10, and 'y' represents the bandwidth in MHz.
+
+⚙️ To use a dataset:
+   1. Choose the desired transmission file (`dataset_n_rof_input_xdBm_yMHz`) representing the transmitted signals.
+   2. Select its corresponding received file (`dataset_n_rof_output_xdBm_yMHz`) containing the received signals.
+   
+🧩 Once loaded, you can preprocess the data, split it into training and testing sets, and use it to train machine learning models for A-RoF system linearization tasks.
+
+
+ 
+
 The `examples` folder contains `GRC` examples for transmitter usage. We have two versions of GRC in order to test this project in two ways. 
 *   **Virtual Loopback:** The first one is the project inside `examples/virtual` folder, called `virtual_xG_Range_loopback.grc`. It runs without using an `USRP` device, that is, it is possible to run the project just in virtual loopback mode to validate the communication. 
 *   **Using SDR/RF (NI USRP):** The second one is the project inside `examples/sdr` folder, called `modem_xG_Range_siso_pp.grc`. It runs using an `USRP` device and it was tested with **NI USRP-2954** and **NI USRP-2952**. In order to communicate **BS** and **UE**, just change the frequency configuration inside the flowgraph that satisfies the following constaints:
