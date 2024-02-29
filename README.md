@@ -52,6 +52,10 @@ To utilize a dataset, follow these steps:
 
    * **Processing:** Once loaded, process the data as required for your A-RoF linearization task.
 
+### Example of How Load a Dataset in a Python IDE
+
+After download the dataset from this repository, make sure to replace the 'path_to_tx_data' and 'path_to_rx_data' with the actual file paths on your system
+
 ```python
 
 import numpy as np
