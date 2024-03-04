@@ -113,7 +113,7 @@ train_matrix = np.c_[rx_data.real, rx_data.imag]
 train_labels = np.c_[tx_data.real, tx_data.imag]
 
 #-----------------------
-# Designing the MLP
+# Designing the MLP Neural Network
 #----------------------
 initializer = tf.keras.initializers.glorot_normal(seed=25)
 mlpModel = Sequential()
