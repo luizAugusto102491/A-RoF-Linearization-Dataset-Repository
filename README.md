@@ -20,7 +20,7 @@ The dataset provided includes both transmitted and received GFDM waveform sample
 
  ### Dataset Description:
 
-The dataset provided here contains training instances and labels acquired from a practical A-RoF (Analog Radio-over-Fiber) system. Signals with bandwidths of 3, 6, 12, and 24 MHz were considered during data collection. For each bandwidth, RF power was varied from 0 to 11 dBm, resulting in eleven pairs of datasets for each bandwidth.
+The dataset provided here contains training instances and labels acquired from a practical A-RoF (Analog Radio-over-Fiber) system. Signals with bandwidths of 3, 6, 12, 24 and 50 MHz were considered during data collection. For each bandwidth, RF power was varied from 0 to 15 dBm, resulting in sixteen pairs of datasets for each bandwidth.
 
 ### File Format:
 
