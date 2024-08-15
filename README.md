@@ -30,14 +30,13 @@ The files are saved in binary format, compatible with most Python IDEs.
 
 Each pair of datasets follows the naming convention:
 
-   *   **Transmitted Samples:** (`dataset_n_rof_input_xdBm_yMHz`)
-   *   **Received Samples:** (`dataset_n_rof_output_xdBm_yMHz`)
+   *   **Transmitted Samples:** (`TX_n_yMHz`)
+   *   **Received Samples:** (`RX_n_yMHz`)
 
 Where:
 
-   * `n` varies from 1 to 11
-   * `x` varies from 0 to 10
-   * `y` represents the bandwidth, which can take values of 3, 6, 12 or 24 MHz
+   * `n` Represents the RF power at the MZM input, measured in dBm, with a range from 0 to 15
+   * `y` represents the bandwidth, which can take values of 3, 6, 12, 24 and 50 MHz
 
 *********************
 
@@ -45,7 +44,7 @@ Where:
 
 To utilize a dataset, follow these steps:
 
-   * **Selecting Data Files:** Choose the transmitted file (`dataset_n_rof_input_xdBm_yMHz`) and its corresponding received file (`dataset_n_rof_output_xdBm_yMHz`).
+   * **Selecting Data Files:** Choose the transmitted file (`TX_n_yMHz`) and its corresponding received file (`RX_n_yMHz`).
   
 
    * **Loading Data:** Load the selected files into your Python environment using appropriate functions to read binary data.
@@ -61,8 +60,8 @@ After downloading the dataset from this repository, be sure to substitute 'path_
 import numpy as np
 
 # Replace 'path_to_tx_data' and 'path_to_rx_data' with the actual file paths on your system
-tx_data_path = 'path_to_tx_data/dataset_6_rof_input_5dBm_6MHz'
-rx_data_path = 'path_to_rx_data/dataset_6_rof_output_5dBm_6MHz'
+tx_data_path = 'path_to_tx_data/TX_5_6MHz'
+rx_data_path = 'path_to_rx_data/RX_5_6MHz'
 
 # Load the transmission data from the file
 tx_data = np.fromfile(tx_data_path, dtype=np.complex64)
@@ -97,8 +96,8 @@ import matplotlib.pyplot as plt
 callback = tf.keras.callbacks.EarlyStopping(monitor='mean_squared_error',  patience=100,min_delta=1e-9, verbose=1,restore_best_weights=True)
 
 # Replace 'path_to_tx_data' and 'path_to_rx_data' with the actual file paths on your system
-tx_data_path = '/home/luizmelo/Documentos/Dataset/6 MHz/dataset_6_rof_input_5dBm_6MHz'
-rx_data_path = '/home/luizmelo/Documentos/Dataset/6 MHz/dataset_6_rof_output_5dBm_6MHz'
+tx_data_path = '/home/luizmelo/Documentos/Dataset/6 MHz/TX_5_6MHz'
+rx_data_path = '/home/luizmelo/Documentos/Dataset/6 MHz/RX_5_6MHz'
 
 # Load the transmission data from the file
 tx_data = np.fromfile(tx_data_path, dtype=np.complex64)
